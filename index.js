@@ -1,3 +1,5 @@
+console.log("Starting API");  
+
 require("dotenv").config();
 const express = require("express");
 const locationsController = require("./src/locations/locations.controller");
