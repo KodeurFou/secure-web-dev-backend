@@ -9,6 +9,14 @@ const userSchema = new mongoose.Schema({
     select: false, // By default, this field is not selected
   },
   role: { type: String },
+  pokedollars: {type: Number},
+  pokemons: [
+    {
+      id: Number,
+      name: String,
+      shiny: Boolean
+    }
+  ]
 });
 
 // Hook, always called before saving an instance of the model.
