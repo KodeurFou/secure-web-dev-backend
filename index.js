@@ -27,16 +27,23 @@ app.use("/users", usersController);
 
 app.get("/", (req, res) => res.status(200).json({ message: "Hello World !" }));
 
-async function main() {
-  await mongoose.connect(process.env.MONGO_URI);
-  console.log("Connected to Mongo Database");
-  app.listen(port, () => {
-    console.log(
-      `API listening on port ${port}, visit http://localhost:${port}/`
-    );
-  });
-}
+// async function main() {
+//   await mongoose.connect(process.env.MONGO_URI);
+//   console.log("Connected to Mongo Database");
+//   app.listen(port, () => {
+//     console.log(
+//       `API listening on port ${port}, visit http://localhost:${port}/`
+//     );
+//   });
+// }
 
-main();
+// main();
 
+app.listen(port, async () => {
+  await mongoose.connect(process.env.MONGO_URI)
+  console.log("Connected")
+  console.log(`API listening on port ${port}, visit http://localhost:${port}/`)
+})
+
+// Export the Express API
 module.exports = app;
