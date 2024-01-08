@@ -41,10 +41,17 @@ async function updateOne(id, newData) {
   // Only allow password editing
   if (newData?.password) {
     user.password = newData.password;
-    await user.save();
-    return await findOne(id);
   }
-  return user;
+  if(newData?.pokedollars){
+    user.pokedollars += newData.pokedollars;
+  } 
+  if(newData?.pokemons){
+    console.log(newData.pokemons);
+    user.pokemons.push(newData.pokemons);
+    console.log(user.pokemons);
+  }
+  await user.save();
+  return await findOne(id);
 }
 
 async function generateJwt(user) {

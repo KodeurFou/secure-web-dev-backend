@@ -9,7 +9,10 @@ const userSchema = new mongoose.Schema({
     select: false, // By default, this field is not selected
   },
   role: { type: String },
-  pokedollars: {type: Number},
+  pokedollars: {
+    type: Number,
+    required: true,
+  },
   pokemons: [
     {
       id: Number,
