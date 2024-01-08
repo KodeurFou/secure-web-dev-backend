@@ -43,7 +43,11 @@ async function updateOne(id, newData) {
     user.password = newData.password;
   }
   if(newData?.pokedollars){
-    user.pokedollars += newData.pokedollars;
+    if (user.pokedollars) {
+      user.pokedollars += newData.pokedollars;
+    } else {
+      user.pokedollars = newData.pokedollars;
+    }
   } 
   if(newData?.pokemons){
     console.log(newData.pokemons);

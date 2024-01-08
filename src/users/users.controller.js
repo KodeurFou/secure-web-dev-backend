@@ -38,7 +38,7 @@ router.get(
   controllerFindSelf
 );
 
-async function controllerUpdateSelf(req, res) {
+async function controllerUpdateSelf(req, res, next) {
   try {
     const user = await usersService.updateOne(req.user?._id, req.body);
     return res.status(200).send(user);
