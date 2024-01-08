@@ -23,7 +23,10 @@ app.use(
   passport.authenticate("jwt", { session: false }),
   locationsController
 );
-app.use("/users", usersController);
+app.use("/users", (req, res, next) => {
+  console.log(`Received a ${req.method} request on ${req.originalUrl}`);
+  next();
+}, usersController);
 
 app.get("/", (req, res) => res.status(200).json({ message: "Hello World !" }));
 
