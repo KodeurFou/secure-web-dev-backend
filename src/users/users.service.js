@@ -38,23 +38,19 @@ async function findOneForAuth(username) {
 
 async function updateOne(id, newData) {
   const user = await findOne(id);
-  // Only allow password editing
-
+  //don't allow username to be updated
   if (newData?.password) {
     user.password = newData.password;
   }
   if(newData?.pokedollars){
     if (user.pokedollars) {
       user.pokedollars += newData.pokedollars;
-      console.log(`${new Date()} paiement est de : ${newData.pokedollars}`);
-    } else {
+          } else {
       user.pokedollars = newData.pokedollars;
     }
   } 
   if(newData?.pokemons){
-    //console.log(newData.pokemons);
     user.pokemons.push(newData.pokemons);
-    //console.log(user.pokemons);
   }
   await user.save();
   return await findOne(id);
