@@ -18,7 +18,9 @@ const userSchema = new mongoose.Schema({
       id: Number,
       name: String,
       shiny: Boolean,
-      types: [String]
+      types: [String],
+      weigth: Number,
+      heigth: Number
     }
   ]
 });
