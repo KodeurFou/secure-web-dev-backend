@@ -24,7 +24,7 @@ app.use(
   locationsController
 );
 app.use("/users", (req, res, next) => {
-  console.log(`Received a ${req.method} request on ${req.originalUrl}`);
+  console.log(`${new Date()} : Received a ${req.method} request on ${req.originalUrl}`);
   next();
 }, usersController);
 
